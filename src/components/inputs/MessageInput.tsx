@@ -1,20 +1,53 @@
 import './MessageInput.scss'
-import {Paperclip} from 'lucide-react'
+import {ArrowRight, Paperclip} from 'lucide-react'
 import {Mic} from 'lucide-react'
+import { ChangeEvent, useState } from 'react';
+import { useMessagesStore } from '../../store/messagesStore';
 
 const MessageInput = () => {
+    const [messageField, setMessageField] = useState<string>('');
+    const {addMessage} = useMessagesStore();
+
+
+    const sendMessage = () => {
+
+        addMessage(
+            {
+                sender: 'user',
+                type: 'text',
+                content: {
+                    text: messageField,
+                }
+            }
+        )
+
+
+    }
     
     return (
         <div className='messageInputBlock'>
-                <button>
+                <button className='pin_btn'>
                     <Paperclip color="white"/>
                 </button>
 
-                <input type='text'></input>
+                <input onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
 
-                <button className='sendBtn'>
+
+
+                {
+                    messageField.trim() ?
+                    <button onClick={() => sendMessage()} className='arrow_btn'>
+                        <ArrowRight color="white"/>
+                    </button>
+
+                    :
+
+
+                <button className='mic_btn'>
                     <Mic color="white"/>
                 </button>
+                }
+
         </div>
 
     );
