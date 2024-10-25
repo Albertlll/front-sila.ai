@@ -1,0 +1,24 @@
+
+
+.chat_cont{
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+
+    display: flex;
+    justify-content: center;
+
+    
+
+}
+
+.chat_zone {
+    position: relative;
+    height: 100%;
+    width: 950px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+}

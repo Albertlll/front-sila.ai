@@ -1,0 +1,67 @@
+
+
+
+.messageInputBlock {
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    
+    align-items: center;
+    justify-items: center;
+
+
+
+    gap: 10px;    position: relative;
+    margin-top: auto;
+    margin-bottom: 20px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    padding-left: 22px;
+    padding-right: 21px;
+
+
+    height: 60px;
+    box-sizing: border-box;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+
+
+
+    background-color: #2F2F2F;
+    border-radius: 9999px;
+
+    button {
+        background: transparent;
+        outline: none;
+        border: transparent;
+
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+    input[type="text"] {
+        width: 100%;
+        font-family: 'Montserrat';
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: white;
+
+        font-size: 18px;
+        padding: 0;
+    }
+
+
+    
+
+}
