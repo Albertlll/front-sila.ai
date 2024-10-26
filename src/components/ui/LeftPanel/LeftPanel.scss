@@ -121,7 +121,6 @@
     }
 
     .chats{
-        align-self: start;
         justify-content: start;
         display: flex;
         flex-direction: column;
@@ -129,9 +128,11 @@
         align-self: end;
 
         margin-top: 32px;
+        width: 100%;
 
         .chat_link {
             width: 125px;
+            margin-left: 40px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
