@@ -3,10 +3,31 @@ import {ArrowRight, Paperclip} from 'lucide-react'
 import {Mic} from 'lucide-react'
 import { ChangeEvent, useState } from 'react';
 import { useMessagesStore } from '../../store/messagesStore';
+import { usePinnedFilesStore } from '../../store/pinnedFilesStore';
+import { usePopupStateStore } from '../../store/popupStateStore';
 
 const MessageInput = () => {
     const [messageField, setMessageField] = useState<string>('');
     const {addMessage} = useMessagesStore();
+    const {setImage} = usePinnedFilesStore();
+    const {open} = usePopupStateStore();
+    
+
+
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files == null) return
+
+        console.log( URL.createObjectURL(event.target.files[0]))
+
+        setImage(
+                URL.createObjectURL(event.target.files[0]),
+        )
+
+        open()
+
+
+
+    };
 
 
     const sendMessage = () => {
@@ -25,12 +46,20 @@ const MessageInput = () => {
     }
     
     return (
+        
         <div className='messageInputBlock'>
-                <button className='pin_btn'>
-                    <Paperclip color="white"/>
-                </button>
 
-                <input onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
+                <input onChange={handleImageChange} accept=".png, .jpg"  type="file" name="" id="fileUppload" className="hidden">
+                </input>
+
+                <label className="pin_btn" htmlFor="fileUppload">
+
+                <Paperclip color="white"/>
+
+                </label>
+
+
+                <input  placeholder='Сообщение к картинке...' onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
 
 
 

@@ -3,6 +3,7 @@ export interface IImageMessage {
     type : 'image';
     content : {
         base64 : string;
+        
     };
 }
 

@@ -1,8 +1,12 @@
+import './ImageMessage.scss'
 
 const ImageMessage = (props : {base64 : string}) => {
     
     return (
-        <img src={props.base64} alt='image' />        
+        <div className='image_cont'>
+            <img className='image_message' src={props.base64} alt='image' />        
+
+        </div>
     );
 };
 

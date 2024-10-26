@@ -13,7 +13,6 @@ const Message = (props: MessageProps) => {
 
         <>
         
-
         <div className={props.sender == 'bot' ? 'message_left' : 'message_right'}>
 
 
@@ -39,7 +38,6 @@ const Message = (props: MessageProps) => {
             }
 
         </div> 
-
 
         </>
 

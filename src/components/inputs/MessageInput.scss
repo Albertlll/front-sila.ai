@@ -1,5 +1,13 @@
 @use '../../styles' as vars;
 
+
+
+.hidden{
+    display: none;
+    
+}
+
+
 .arrow_btn {
     border-radius: 999px;
     background-color: vars.$accent-btn;
@@ -8,7 +16,11 @@
 
 
 .pin_btn {
-    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
 }
 
 .mic_btn {
