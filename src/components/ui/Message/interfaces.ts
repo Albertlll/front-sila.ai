@@ -2,8 +2,8 @@ export interface IImageMessage {
     sender : 'bot' | 'user'
     type : 'image';
     content : {
-        base64 : string;
-        
+        url : string;
+        text : string;
     };
 }
 

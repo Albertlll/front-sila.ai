@@ -28,7 +28,7 @@ const Message = (props: MessageProps) => {
                 <TextMessage text={props.content.text}/>
                 :
                 props.type == 'image'?
-                <ImageMessage base64={props.content.base64}/>
+                <ImageMessage url={props.content.url}/>
                 :
                 <div>
                     Audio message is not supported.

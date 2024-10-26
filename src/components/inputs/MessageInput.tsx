@@ -1,6 +1,5 @@
 import './MessageInput.scss'
 import {ArrowRight, Paperclip} from 'lucide-react'
-import {Mic} from 'lucide-react'
 import { ChangeEvent, useState } from 'react';
 import { useMessagesStore } from '../../store/messagesStore';
 import { usePinnedFilesStore } from '../../store/pinnedFilesStore';
@@ -11,6 +10,8 @@ const MessageInput = () => {
     const {addMessage} = useMessagesStore();
     const {setImage} = usePinnedFilesStore();
     const {open} = usePopupStateStore();
+
+    
     
 
 
@@ -43,6 +44,19 @@ const MessageInput = () => {
         )
 
 
+        addMessage(
+            {
+                sender: 'bot',
+                type: 'text',
+                content: {
+                    text: 'Ты удивил меня таким необычным диалогом! Но знаешь, в этом есть что-то мистическое и глубокое. Взгляд — это мощное средство связи, иногда в нем можно прочесть больше, чем в словах. Может, тебе интересно создать атмосферу загадки или выразить идею о глубоком взаимопонимании без слов? Почему бы не превратить это в элемент квеста или визуальной новеллы? Ситуация, когда персонажи испытывают что-то подобное, могла бы быть интригующей. Как думаешь?',
+                }
+            }
+        )
+
+
+
+
     }
     
     return (
@@ -58,24 +72,14 @@ const MessageInput = () => {
 
                 </label>
 
-
-                <input  placeholder='Сообщение к картинке...' onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
-
-
-
-                {
-                    messageField.trim() ?
-                    <button onClick={() => sendMessage()} className='arrow_btn'>
-                        <ArrowRight color="white"/>
-                    </button>
-
-                    :
-
-
-                <button className='mic_btn'>
-                    <Mic color="white"/>
+                <input  placeholder='Отправить текст' onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
+        
+                <button onClick={() => sendMessage()} className='arrow_btn'>
+                    <ArrowRight color="white"/>
                 </button>
-                }
+
+
+                
 
         </div>
 

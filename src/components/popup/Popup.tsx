@@ -43,10 +43,15 @@ function Popup() {
                 sender: 'user',
                 type: 'image',
                 content: {
-                    base64: nowImage,
+                    url: nowImage,
+                    text: ''
                 }
             }
         )
+
+
+
+        
 
         addMessage (
             {
@@ -57,6 +62,9 @@ function Popup() {
                 }
             }
         )
+
+
+
 
 
         addMessage (
