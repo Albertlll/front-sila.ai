@@ -7,6 +7,34 @@
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
+
+
+    .splitter {
+        width: calc(100% + 60px);
+        margin-left: -30px;
+        height: 5px;
+        background-color: vars.$sub-bg;
+
+    }
+
+
+    .link {
+        color: vars.$text-color;
+        background-color: transparent;
+        gap: 16px;
+        cursor: pointer;
+        
+
+        h3 {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        icon {
+            height: 16px;
+            width: 16px;
+        }
+    }
     
 
 
@@ -40,24 +68,34 @@
 
     }
 
+    .tools_list {
+
+        display: flex;
+        flex-direction: column;
+        gap:33px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+
+
+        align-items: start;
+       
+        button {
+            @extend .link
+        }
+
+
+
+    }
+
 
     .new_chat_btn {
-
         font-size: 14px;
-
         border-radius: 10px;
-
         color: vars.$text-color;
-
         margin-top: 20px;
-
         gap: 13px;
-
         height: 41px;
-
         background-color: vars.$sub-btn;
-
-        
     }
 
     .zoomer {
@@ -71,4 +109,41 @@
     justify-content: center;
 
     width: 320px;
+
+    .message_branches_label {
+        @extend .link;
+        cursor: default;
+        display: flex;
+        gap: 16px;
+
+        align-self: start;
+        margin-top: 32px;
+    }
+
+    .chats{
+        align-self: start;
+        justify-content: end;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-self: end;
+
+        margin-top: 32px;
+
+        .chat_link {
+            width: 125px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: end;
+
+            cursor: pointer;
+
+            color: vars.$chat-history-btn;
+        }
+
+
+    }
+
+
 }
