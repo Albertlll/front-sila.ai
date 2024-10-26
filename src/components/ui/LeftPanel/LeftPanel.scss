@@ -122,7 +122,7 @@
 
     .chats{
         align-self: start;
-        justify-content: end;
+        justify-content: start;
         display: flex;
         flex-direction: column;
         gap: 32px;
@@ -135,7 +135,6 @@
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-            text-align: end;
 
             cursor: pointer;
 

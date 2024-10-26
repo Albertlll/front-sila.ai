@@ -33,6 +33,9 @@ const MessageInput = () => {
 
     const sendMessage = () => {
 
+
+        if (messageField === '') return;
+
         addMessage(
             {
                 sender: 'user',
@@ -72,7 +75,7 @@ const MessageInput = () => {
 
                 </label>
 
-                <input  placeholder='Отправить текст' onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
+                <input onKeyDown={(e) => { if (e.key === 'Enter') {sendMessage()}}} placeholder='Отправить текст' onChange={(e : ChangeEvent<HTMLInputElement>) => setMessageField(e.target.value)} type='text'></input>
         
                 <button onClick={() => sendMessage()} className='arrow_btn'>
                     <ArrowRight color="white"/>
