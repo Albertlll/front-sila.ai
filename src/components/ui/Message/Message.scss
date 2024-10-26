@@ -1,10 +1,8 @@
 @use '../../../styles' as vars;
 
-
 .message_cont {
     max-width: 70%;
 }
-
 
 .message {
     width: 100%;
@@ -17,6 +15,36 @@
     word-break: break-word;
     white-space: normal;
 
+    position: relative;
+
+    & .actions {
+        position: absolute;
+        bottom: -40px;
+        left: 55px;
+        display: flex;
+        gap: 20px;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    & .actions button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: #c2c2c2;
+
+        transition: transform 0.4s ease, color 0.4s ease;
+    }
+
+    & .actions button:hover {
+        color: #fcfcfc;
+        transform: scale(1.2 );
+    }
+
+    & .actions button:active {
+        transform: scale(0.9);
+    }
 }
 
 .message_left {
@@ -27,32 +55,28 @@
 
     .text_message {
         line-height: 34px;
+        color: white;
     }
-
 }
 
 .message_right {
     @extend .message;
     justify-content: end;
 
-
     .text_message {
-        padding-left: 29px;
-
         padding: 10px;
         border-radius: 30px;
-        
+
         padding-top: 16px;
         padding-bottom: 16px;
         padding-left: 29px;
         padding-right: 29px;
 
-
         line-height: 28px;
         background-color: vars.$cloud-bg;
 
-        
         max-width: 70%;
         word-break: break-word;
+        color: white;
     }
 }
