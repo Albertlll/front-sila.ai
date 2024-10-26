@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 const Message: React.FC<MessageProps> = (props) => {
     const [isSpeaking, setIsSpeaking] = useState(false);
-    const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
     const [activeReaction, setActiveReaction] = useState<'like' | 'dislike' | null>(null); // Новое состояние для активной реакции
 
     const handleCopy = async () => {
@@ -23,7 +22,6 @@ const Message: React.FC<MessageProps> = (props) => {
 
     const speakText = (text: string) => {
         const newUtterance = new SpeechSynthesisUtterance(text);
-        setUtterance(newUtterance);
         newUtterance.onend = () => {
             setIsSpeaking(false);
         };

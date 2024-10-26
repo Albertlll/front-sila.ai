@@ -2,22 +2,27 @@
 
 .chat_cont{
     width: 100%;
-    height: 100%;
+    height: calc(100% - 64px);
     display: flex;
     justify-content: center;
-    padding: 32px;
+    margin-right: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+
     box-sizing: border-box;
+
+    background-color: #212121;
+    border-radius: 20px;
+    
 
 }
 
 .chat_zone {
 
+
     border-radius: 30px;
 
     // padding: 10px;
-
-    background-color: #212121;
-
     position: relative;
     padding-top: 50px;
     box-sizing: border-box;

@@ -1,11 +1,11 @@
 import './App.scss'
 import Chat from './components/ui/Chat'
-
+import MainPage from './pages/MainPage'
 function App() {
 
   return (
     <>
-     <Chat/>
+     <MainPage/>
     </>
   )
 }

@@ -9,15 +9,18 @@ const Chat = () => {
 
     
     return (
-        <div className="chat_cont">
-            <div className="chat_zone">
-                <Popup/>
-                
-                <MessagesHistory/>
 
-                <MessageInput/>
+
+            <div className="chat_cont">
+                <div className="chat_zone">
+                    <Popup/>
+                    
+                    <MessagesHistory/>
+
+                    <MessageInput/>
+                </div>
             </div>
-        </div>
+
     );
 };
 

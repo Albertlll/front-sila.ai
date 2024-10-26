@@ -1,3 +1,4 @@
+import Chat from "../components/ui/Chat";
 import LeftPanel from "../components/ui/LeftPanel/LeftPanel";
 
 import './MainPage.scss'
@@ -6,6 +7,8 @@ function MainPage() {
         <div className="main_page">
 
             <LeftPanel/>
+
+            <Chat/>
 
         </div>
     );
