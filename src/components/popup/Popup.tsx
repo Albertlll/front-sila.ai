@@ -24,8 +24,7 @@ const customStyles = {
 
 
   const rewriteFile = async (url : string) => {
-  
-  
+    //   из url base64
   
       const reader = new FileReader();
       const blob = await fetch(url).then(r => r.blob());
@@ -39,7 +38,7 @@ const customStyles = {
   }
   
 function Popup() {
-
+    // Попап для ввода фото
     const {isOpen} = useChatStore()
     const {close} = useChatStore()
     const {addMessage} = useChatStore()
@@ -53,6 +52,7 @@ function Popup() {
 
 
     const handleSend  = async () => {
+    // Отправка сообщения
 
 
         httpClient.post('/send_message', {

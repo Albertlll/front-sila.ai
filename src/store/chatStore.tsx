@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { IChatStore, IChat } from "./interfaces";
 import { MessageProps } from "../components/ui/Message/interfaces";
 import { persist } from "zustand/middleware";
-
+// стор
 
 export const useChatStore = create<IChatStore>()(persist((set) => ({
     isOpen : false,
@@ -16,7 +16,7 @@ export const useChatStore = create<IChatStore>()(persist((set) => ({
 
     messages: [],
     lastChats: [],
-    
+
     addСhat: (newChat : IChat) => {
         set((state) => ({lastChats: [...state.lastChats, newChat]}))
     },
