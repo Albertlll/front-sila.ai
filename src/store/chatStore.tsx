@@ -16,7 +16,10 @@ export const useChatStore = create<IChatStore>()(persist((set) => ({
 
     messages: [],
     lastChats: [],
- 
+    
+    addСhat: (newChat : IChat) => {
+        set((state) => ({lastChats: [...state.lastChats, newChat]}))
+    },
         
     setLastChats(chats : Array<IChat>) {
         set({lastChats : chats})

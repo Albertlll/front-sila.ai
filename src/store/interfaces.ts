@@ -19,6 +19,9 @@ export interface IChatStore {
     addMessage:  (message : MessageProps) => void,
     setMessages: (dialog : Array<MessageProps>) => void,
 
+
+    addСhat:  (newChat : IChat) => void,
+
     isOpen : boolean,
     close : () => void,
     open : () => void,

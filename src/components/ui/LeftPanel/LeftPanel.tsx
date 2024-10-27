@@ -9,7 +9,7 @@ import { MessageProps } from '../Message/interfaces';
 function LeftPanel() {
 
 
-    const {uuid, setLastChats, lastChats, setMessages, nowChatIndex, setNowChatIndex} = useChatStore();
+    const {uuid, setLastChats, lastChats, setMessages, nowChatIndex, setNowChatIndex, addСhat} = useChatStore();
 
 
     useEffect(() => {
@@ -42,10 +42,41 @@ function LeftPanel() {
     }, [])
 
 
+    const addNewChat = () => {
+
+
+
+        httpClient.get('/chat-create', {
+            params: {
+                user_id : uuid
+            }
+        }).then((response) => {
+            addСhat({
+                chat_id: response.data.chat_id,
+                last_message: {
+                    sender: 'Bot',
+                    content: 'Новый чат!',
+                    timestamp: '2022-01-15T10:30:00'
+                }
+            })
+
+            setNowChatIndex(lastChats.length - 1)
+
+
+            
+        })
+
+    }
+
+
 
     const setDialog = (index : number) => {
 
-        httpClient.get('/chat_history/' + lastChats[index].chat_id).then((response) => {
+        httpClient.get('/chat_history/', {
+            params: {
+              chat_id: lastChats[index].chat_id
+            }
+          }).then((response) => {
 
             const newHistory : Array<MessageProps> = [];
             response.data.messages.map((data) => {
@@ -77,7 +108,7 @@ function LeftPanel() {
         
             </div>
 
-            <button className='new_chat_btn'>
+            <button className='new_chat_btn' onClick={() => addNewChat()}>
                 <Search className='zoomer' color="white"/>
                 <div>Новый чат</div>
             </button>
