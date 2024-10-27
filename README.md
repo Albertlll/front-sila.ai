@@ -1,50 +1,102 @@
-# React + TypeScript + Vite
+# React TypeScript Vite App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Currently, two official plugins are available:
+Простое React приложение, созданное с использованием TypeScript и Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Начало работы
 
-## Expanding the ESLint configuration
+Следуйте инструкциям ниже, чтобы клонировать и запустить проект на локальной машине.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Предварительные требования
 
-- Configure the top-level `parserOptions` property like this:
+- [Node.js](https://nodejs.org/) (16.8 или выше)
+- npm или yarn
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Установка
+
+1. **Клонируйте репозиторий**
+
+   ```bash
+   git clone https://github.com/ваш-логин/ваш-репозиторий.git
+   cd ваш-репозиторий
+   ```
+
+2. **Установите зависимости**
+
+   С помощью npm:
+
+   ```bash
+   npm install
+   ```
+
+   Или с помощью yarn:
+
+   ```bash
+   yarn install
+   ```
+
+### Запуск приложения
+
+Чтобы запустить приложение в режиме разработки, используйте команду:
+
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+или
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+yarn dev
 ```
+
+После этого ваше приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+
+### Сборка приложения
+
+Чтобы собрать приложение для продакшн-окружения, выполните:
+
+```bash
+npm run build
+```
+
+или
+
+```bash
+yarn build
+```
+
+Собранные файлы будут находится в папке `dist`.
+
+### Запуск тестов
+
+Если в проекте есть тесты, вы можете запустить их с помощью:
+
+```bash
+npm test
+```
+
+или
+
+```bash
+yarn test
+```
+
+## Описание структуры проекта
+
+```
+/src
+  ├── assets          # Статические ресурсы (изображения, шрифты и т.д.)
+  ├── components      # Компоненты React
+  ├── hooks           # Пользовательские хуки
+  ├── pages           # Страницы приложения
+  └── App.tsx        # Главный файл вашего приложения
+```
+
+## Лицензия
+
+Этот проект лицензирован под MIT License - смотрите файл [LICENSE](LICENSE) для подробностей.
+
+## Поддержка
+
+Если у вас возникли вопросы или предложения, пожалуйста, создайте [issue](https://github.com/ваш-логин/ваш-репозиторий/issues).
