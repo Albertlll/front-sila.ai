@@ -1,15 +1,27 @@
 import './MessageInput.scss'
 import {ArrowRight, Paperclip} from 'lucide-react'
 import { ChangeEvent, useState } from 'react';
-import { useMessagesStore } from '../../store/messagesStore';
-import { usePinnedFilesStore } from '../../store/pinnedFilesStore';
-import { usePopupStateStore } from '../../store/popupStateStore';
+
+
+import { useChatStore } from '../../store/chatStore';
+import { httpClient } from '../../httpClient';
 
 const MessageInput = () => {
     const [messageField, setMessageField] = useState<string>('');
-    const {addMessage} = useMessagesStore();
-    const {setImage} = usePinnedFilesStore();
-    const {open} = usePopupStateStore();
+    const {addMessage} = useChatStore();
+    const {setImage} = useChatStore();
+    const {open} = useChatStore();
+
+    const {uuid} = useChatStore();
+
+    const {nowChatIndex} = useChatStore();
+    const {lastChats} = useChatStore();
+
+
+
+
+
+
 
     
     
@@ -46,7 +58,6 @@ const MessageInput = () => {
             }
         )
 
-
         addMessage(
             {
                 sender: 'bot',
@@ -56,6 +67,41 @@ const MessageInput = () => {
                 }
             }
         )
+
+        httpClient.post('/send_message', {
+            user_id : uuid,
+            chat_id :  lastChats[nowChatIndex].chat_id,
+            message : messageField,
+            images : []
+        }).then((response) => {
+            addMessage(
+                {
+                    sender: 'user',
+                    type: 'text',
+                    content: {
+                        text: response.data.bot_answer,
+                    }
+                }
+            )
+
+            response.data.photos.map((photo : {
+                "chapter":string
+               "image_number": string
+                "path": string
+             }) => {
+                addMessage(
+                    {
+                        sender: 'bot',
+                        type: 'image',
+                        content: {
+                            url: photo.path,
+                            text: '',
+                        }
+                    }
+                )
+            })
+    
+        })
 
 
 

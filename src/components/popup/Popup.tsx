@@ -1,10 +1,9 @@
 import Modal from 'react-modal';
-import { usePopupStateStore } from '../../store/popupStateStore';
+import  {useChatStore} from '../../store/chatStore'
 import './Popup.scss'
-import { usePinnedFilesStore } from '../../store/pinnedFilesStore';
 import { ArrowRight } from 'lucide-react';
-import { useMessagesStore } from '../../store/messagesStore';
 import { ChangeEvent, useState } from 'react';
+import { httpClient } from '../../httpClient';
 Modal.setAppElement('#root');
 const customStyles = {
     content: {
@@ -23,59 +22,120 @@ const customStyles = {
     }
   };
 
+
+  const rewriteFile = async (url : string) => {
+  
+  
+  
+      const reader = new FileReader();
+      const blob = await fetch(url).then(r => r.blob());
+      reader.readAsDataURL(blob); 
+      reader.onloadend = function() {
+        const base64data = reader.result;         
+        return base64data       
+        // console.log(base64data);
+      }
+  
+  }
+  
 function Popup() {
 
-    const isOpen = usePopupStateStore((state) => state.isOpen)
-    const {close} = usePopupStateStore()
+    const {isOpen} = useChatStore()
+    const {close} = useChatStore()
+    const {addMessage} = useChatStore()
 
-    const {addMessage} = useMessagesStore()
+    const {image} = useChatStore()
 
-    const nowImage = usePinnedFilesStore((state) => state.image)
-
+    const {uuid, lastChats, nowChatIndex, } = useChatStore()
 
     const [imgMessage, setImgMessage] = useState('')
 
 
 
-    const handleSend = () => {
-        addMessage(
-            {
-                sender: 'user',
-                type: 'image',
-                content: {
-                    url: nowImage,
-                    text: ''
+    const handleSend  = async () => {
+
+
+        httpClient.post('/send_message', {
+            user_id : uuid,
+            chat_id :  lastChats[nowChatIndex].chat_id,
+            message : imgMessage,
+            images : [rewriteFile(image)]
+
+        }).then((response) => {
+            addMessage(
+                {
+                    sender: 'user',
+                    type: 'text',
+                    content: {
+                        text: response.data.bot_answer,
+                    }
                 }
-            }
-        )
+            )
+
+            response.data.photos.map((photo : {
+                "chapter":string
+               "image_number": string
+                "path": string
+             }) => {
+                addMessage(
+                    {
+                        sender: 'bot',
+                        type: 'image',
+                        content: {
+                            url: photo.path,
+                            text: '',
+                        }
+                    }
+                )
+            })
+    
+        })
+
+
+
+
+
+
+
+
+        // addMessage(
+        //     {
+        //         sender: 'user',
+        //         type: 'image',
+        //         content: {
+        //             url: image,
+        //             text: ''
+        //         }
+        //     }
+        // )
 
 
 
         
 
-        addMessage (
-            {
-                sender: 'user',
-                type: 'text',
-                content: {
-                    text: imgMessage
-                }
-            }
-        )
+        // addMessage (
+        //     {
+        //         sender: 'user',
+        //         type: 'text',
+        //         content: {
+        //             text: imgMessage
+        //         }
+        //     }
+        // )
 
 
 
 
 
-        addMessage (
-            {
-                sender: 'bot',
-                type: 'text',
-                content: {
-                    text: "Как же я задолбался"
-                }
-            }
-        )
+        // addMessage (
+        //     {
+        //         sender: 'bot',
+        //         type: 'text',
+        //         content: {
+        //             text: "Как же я задолбался"
+        //         }
+        //     }
+        // )
 
 
         close()
@@ -86,7 +146,7 @@ function Popup() {
         <Modal isOpen={isOpen} onRequestClose={close} style={customStyles} closeTimeoutMS={500}>
             <div className="popup_cont">
                 <div className='image_box'>
-                    <img src={nowImage} alt='pinned_image'/>
+                    <img src={image} alt='pinned_image'/>
                 </div>
 
                 <div className='imagetextinp'>

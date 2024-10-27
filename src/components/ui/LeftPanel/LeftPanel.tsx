@@ -1,7 +1,70 @@
 import logo from './logo.svg';
 import { Layers3, MessageCircle, Search, Sidebar, User } from 'lucide-react';
 import './LeftPanel.scss'
+import { useEffect } from 'react';
+import { httpClient } from '../../../httpClient';
+import { useChatStore } from '../../../store/chatStore';
+import { IChat } from '../../../store/interfaces';
+import { MessageProps } from '../Message/interfaces';
 function LeftPanel() {
+
+
+    const {uuid, setLastChats, lastChats, setMessages, nowChatIndex, setNowChatIndex} = useChatStore();
+
+
+    useEffect(() => {
+
+        setLastChats([
+            {
+                chat_id: 1,
+                last_message: {
+                    sender: 'John Doe',
+                    content: 'Привет!',
+                    timestamp: '2022-01-15T10:30:00'
+                }
+
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            }
+        ])
+
+
+    //   httpClient.get('/last/' + uuid).then((response) => {
+    //     setLastChats(response.data)
+    //   })
+    
+    }, [])
+
+
+
+    const setDialog = (index : number) => {
+
+        httpClient.get('/chat_history/' + lastChats[index].chat_id).then((response) => {
+
+            const newHistory : Array<MessageProps> = [];
+            response.data.messages.map((data) => {
+                newHistory.push({
+                    sender: data.sender,
+                    type: 'text',
+                    content: {
+                        text: data.content,
+                    },
+                })
+            })
+            
+            setMessages(newHistory)
+            setNowChatIndex(index)
+       })
+
+    }
+
+
     return (
         <div className="left_panel">
 
@@ -50,10 +113,13 @@ function LeftPanel() {
 
             <div className='chats'>
 
-                <a className='chat_link'>это чатик от нейронки номер раз</a>
-                <a className='chat_link'>чат</a>
-                <a className='chat_link'>чат</a>
-                <a className='chat_link'></a>
+                {
+
+                    lastChats.map((chat : IChat, index) => (
+                        <a key={index} onClick={() => setDialog(index)} className='chat_link'>{chat.last_message.content}</a>
+                    ))
+                
+                }
 
 
             </div>
