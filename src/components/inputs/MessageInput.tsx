@@ -14,17 +14,8 @@ const MessageInput = () => {
 
     const {uuid} = useChatStore();
 
-    const {nowChatIndex} = useChatStore();
-    const {lastChats} = useChatStore();
+    const {nowChatId} = useChatStore();
 
-
-
-
-
-
-
-    
-    
 
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +28,6 @@ const MessageInput = () => {
         )
 
         open()
-
 
 
     };
@@ -70,7 +60,7 @@ const MessageInput = () => {
 
         httpClient.post('/send_message', {
             user_id : uuid,
-            chat_id :  lastChats[nowChatIndex].chat_id,
+            chat_id : nowChatId,
             message : messageField,
             images : []
         }).then((response) => {

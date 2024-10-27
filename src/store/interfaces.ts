@@ -13,8 +13,6 @@ export interface IChat {
 export interface IChatStore {
 
     messages: Array<MessageProps>,
-    lastChats : Array<IChat>,
-    setLastChats: (chats: Array<IChat>) => void,
 
     addMessage:  (message : MessageProps) => void,
     setMessages: (dialog : Array<MessageProps>) => void,
@@ -28,9 +26,12 @@ export interface IChatStore {
 
     uuid : string,
     setUuid : (newUuid : string) => void,
-    nowChatIndex : number,
-    setNowChatIndex : (newIndex : number) => void,
 
+    nowChatId : number,
+    setNowChatId : (newIndex : number) => void,
+
+    nowPage : number,
+    setNowPage : (newIndex : number) => void,
 
 
 }

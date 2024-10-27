@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import './App.scss'
 import MainPage from './pages/MainPage'
+import Chat from './components/ui/Chat';
 
 import { httpClient } from './httpClient';
 import { useChatStore } from './store/chatStore';
@@ -24,7 +25,8 @@ function App() {
 
   return (
     <>
-     <MainPage/>
+     <Chat />
+     {/* <MainPage/> */}
     </>
   )
 }

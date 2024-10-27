@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IChatStore, IChat } from "./interfaces";
+import { IChatStore } from "./interfaces";
 import { MessageProps } from "../components/ui/Message/interfaces";
 import { persist } from "zustand/middleware";
 
@@ -10,17 +10,9 @@ export const useChatStore = create<IChatStore>()(persist((set) => ({
     open : () => set({isOpen : true}),
 
 
-    nowChatIndex : 0,
-    setNowChatIndex : (newIndex : number) => set({nowChatIndex : newIndex}),
-
 
     messages: [],
-    lastChats: [],
  
-        
-    setLastChats(chats : Array<IChat>) {
-        set({lastChats : chats})
-    },
 
     addMessage: (newMessage : MessageProps) => {
         set((state) => ({messages: [...state.messages, newMessage]}))
@@ -32,12 +24,17 @@ export const useChatStore = create<IChatStore>()(persist((set) => ({
 
 
 
-
     image : '',
     setImage : (newImage : string) => set({image : newImage}),
 
     uuid : '',
-    setUuid : (newId : string) => set({uuid : newId})
+    setUuid : (newId : string) => set({uuid : newId}),
+
+    nowChatId : 0,
+    setNowChatId : (newIndex : number) => set({nowChatId : newIndex}),
+
+    nowPage : 0,
+    setNowPage : (newPage : number) => set({nowPage : newPage}),
 
 
 

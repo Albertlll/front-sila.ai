@@ -44,9 +44,9 @@ function Popup() {
     const {close} = useChatStore()
     const {addMessage} = useChatStore()
 
-    const {image} = useChatStore()
+    const {image, nowChatId} = useChatStore()
 
-    const {uuid, lastChats, nowChatIndex, } = useChatStore()
+    const {uuid } = useChatStore()
 
     const [imgMessage, setImgMessage] = useState('')
 
@@ -57,7 +57,7 @@ function Popup() {
 
         httpClient.post('/send_message', {
             user_id : uuid,
-            chat_id :  lastChats[nowChatIndex].chat_id,
+            chat_id : nowChatId,
             message : imgMessage,
             images : [rewriteFile(image)]
 

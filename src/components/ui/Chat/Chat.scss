@@ -5,19 +5,21 @@
     height: calc(100% - 64px);
     display: flex;
     justify-content: center;
+    
     margin-right: 32px;
     margin-top: 32px;
     margin-bottom: 32px;
 
     box-sizing: border-box;
 
-    background-color: #212121;
+    background-color: transparent;
     border-radius: 20px;
     
 
 }
 
 .chat_zone {
+    background-color: #212121;
 
 
     border-radius: 30px;

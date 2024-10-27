@@ -4,65 +4,22 @@ import './LeftPanel.scss'
 import { useEffect } from 'react';
 import { httpClient } from '../../../httpClient';
 import { useChatStore } from '../../../store/chatStore';
-import { IChat } from '../../../store/interfaces';
-import { MessageProps } from '../Message/interfaces';
+
 function LeftPanel() {
 
 
-    const {uuid, setLastChats, lastChats, setMessages, nowChatIndex, setNowChatIndex} = useChatStore();
+    const {uuid, setNowChatId} = useChatStore();
 
 
     useEffect(() => {
 
-        setLastChats([
-            {
-                chat_id: 1,
-                last_message: {
-                    sender: 'John Doe',
-                    content: 'Привет!',
-                    timestamp: '2022-01-15T10:30:00'
-                }
-
-            },
-            {
-                chat_id: 2,
-                last_message: {
-                    sender: 'Jane Doe',
-                    content: 'Привет, как дела?',
-                    timestamp: '2022-01-15T10:35:00'
-                }
-            }
-        ])
-
-
-    //   httpClient.get('/last/' + uuid).then((response) => {
-    //     setLastChats(response.data)
-    //   })
+       httpClient.get('/last/' + uuid).then((response) => {
+        setNowChatId(response.data[0])
+       })
     
     }, [])
 
 
-
-    const setDialog = (index : number) => {
-
-        httpClient.get('/chat_history/' + lastChats[index].chat_id).then((response) => {
-
-            const newHistory : Array<MessageProps> = [];
-            response.data.messages.map((data) => {
-                newHistory.push({
-                    sender: data.sender,
-                    type: 'text',
-                    content: {
-                        text: data.content,
-                    },
-                })
-            })
-            
-            setMessages(newHistory)
-            setNowChatIndex(index)
-       })
-
-    }
 
 
     return (
@@ -77,10 +34,10 @@ function LeftPanel() {
         
             </div>
 
-            <button className='new_chat_btn'>
+            {/* <button className='new_chat_btn'>
                 <Search className='zoomer' color="white"/>
                 <div>Новый чат</div>
-            </button>
+            </button> */}
 
 
 
@@ -104,27 +61,12 @@ function LeftPanel() {
 
             </div>
 
-            <div className='splitter'></div>
-
+            {/* <div className='splitter'></div> */}
+{/* 
             <div className='message_branches_label'>
                 <Layers3 className="icon" color="white"/>
                 <h3>История чатов</h3>
-            </div>
-
-            <div className='chats'>
-
-                {
-
-                    lastChats.map((chat : IChat, index) => (
-                        <a key={index} onClick={() => setDialog(index)} className='chat_link'>{chat.last_message.content}</a>
-                    ))
-                
-                }
-
-
-            </div>
-
-
+            </div> */}
 
 
         </div>

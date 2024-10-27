@@ -23,14 +23,9 @@ function MessagesHistory() {
         <div className="messages_history">
 
 
-
             {
 
-
-                messages.map((msg, index) => (
-
-
-                    
+                messages.map((msg, index) => (       
 
                          index === messages.length - 1 ?
                          <div ref={lastMessageRef}>
@@ -38,10 +33,8 @@ function MessagesHistory() {
                          </div>
                         : 
                         <Message key={index} {...msg} />
-
                     
                 ))
-                
             }
 
         </div>
