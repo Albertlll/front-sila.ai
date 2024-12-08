@@ -3,7 +3,6 @@
 .chat_cont{
     width: 100%;
     height: calc(100% - 64px);
-    display: flex;
     justify-content: center;
     margin-right: 32px;
     margin-top: 32px;
@@ -27,7 +26,11 @@
     padding-top: 50px;
     box-sizing: border-box;
     height: 100%;
-    width: 950px;
+    // width: 950px;
+
+    max-width: 100%;
+
+    min-width: 320px;
 
     display: flex;
     flex-direction: column;
