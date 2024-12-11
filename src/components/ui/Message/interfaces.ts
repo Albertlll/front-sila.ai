@@ -1,5 +1,5 @@
 export interface IImageMessage {
-    sender : 'bot' | 'user'
+    sender : 'bot' | 'user';
     type : 'image';
     content : {
         url : string;
@@ -9,7 +9,7 @@ export interface IImageMessage {
 
 
 export interface ITextMessage {
-    sender : 'bot' | 'user'
+    sender : 'bot' | 'user';
     type : 'text';
     content : {
         text : string;
@@ -18,7 +18,7 @@ export interface ITextMessage {
 
 
 export interface IAudioMessage {
-    sender : 'bot' | 'user'
+    sender : 'bot' | 'user';
     type : 'audio';
     content : {
         url : string;
@@ -28,3 +28,4 @@ export interface IAudioMessage {
 
 
 export type MessageProps = IAudioMessage | ITextMessage | IImageMessage
+

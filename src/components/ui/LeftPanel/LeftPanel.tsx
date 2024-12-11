@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { httpClient } from '../../../httpClient';
 import { useChatStore } from '../../../store/chatStore';
 import { IChat } from '../../../store/interfaces';
-import { MessageProps } from '../Message/interfaces';
+import { ITextMessage, MessageProps } from '../Message/interfaces';
 function LeftPanel() {
 
 
@@ -79,14 +79,18 @@ function LeftPanel() {
           }).then((response) => {
 
             const newHistory : Array<MessageProps> = [];
-            response.data.messages.map((data) => {
-                newHistory.push({
-                    sender: data.sender,
-                    type: 'text',
-                    content: {
-                        text: data.content,
-                    },
-                })
+            response.data.messages.map((data : MessageProps) => {
+
+                switch (data.type) {
+                    case "text" :
+                        newHistory.push({
+                            type: 'text',
+                            sender: data.sender,
+                            content: {
+                                text: data.content.text,
+                            },
+                        })
+                }
             })
             
             setMessages(newHistory)

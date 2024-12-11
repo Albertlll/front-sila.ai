@@ -61,7 +61,8 @@ function Popup() {
             message : imgMessage,
             images : [rewriteFile(image)]
 
-        }).then((response) => {
+        })
+        .then((response) => {
             addMessage(
                 {
                     sender: 'user',
@@ -89,6 +90,28 @@ function Popup() {
                 )
             })
     
+        })
+        .catch((error) => {
+            console.log("ошибка запроса, вывод тестовых данных")
+
+            addMessage(
+             {
+                 sender: 'user',
+                 type: 'image',
+                 content: {
+                     url: image,
+                     text: imgMessage
+                 }
+             }
+         )
+
+
+
+        
+
+
+
+
         })
 
 

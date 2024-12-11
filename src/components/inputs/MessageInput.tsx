@@ -18,15 +18,6 @@ const MessageInput = () => {
     const {lastChats} = useChatStore();
 
 
-
-
-
-
-
-    
-    
-
-
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files == null) return
 
@@ -54,16 +45,6 @@ const MessageInput = () => {
                 type: 'text',
                 content: {
                     text: messageField,
-                }
-            }
-        )
-
-        addMessage(
-            {
-                sender: 'bot',
-                type: 'text',
-                content: {
-                    text: 'Ты удивил меня таким необычным диалогом! Но знаешь, в этом есть что-то мистическое и глубокое. Взгляд — это мощное средство связи, иногда в нем можно прочесть больше, чем в словах. Может, тебе интересно создать атмосферу загадки или выразить идею о глубоком взаимопонимании без слов? Почему бы не превратить это в элемент квеста или визуальной новеллы? Ситуация, когда персонажи испытывают что-то подобное, могла бы быть интригующей. Как думаешь?',
                 }
             }
         )
@@ -101,6 +82,20 @@ const MessageInput = () => {
                 )
             })
     
+        }).catch((error) => {
+
+            console.log("ошибка запроса, вывод тестовых данных")
+
+        addMessage(
+            {
+                sender: 'bot',
+                type: 'text',
+                content: {
+                    text: 'Ошибка подключения.',
+                }
+            }
+        )
+
         })
 
 

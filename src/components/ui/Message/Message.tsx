@@ -63,7 +63,7 @@ const Message: React.FC<MessageProps> = (props) => {
             {props.type === 'text' ? (
                 <TextMessage text={props.content.text} />
             ) : props.type === 'image' ? (
-                <ImageMessage url={props.content.url} />
+                <ImageMessage text={props.content.text} url={props.content.url} />
             ) : (
                 <div>Audio message is not supported.</div>
             )}

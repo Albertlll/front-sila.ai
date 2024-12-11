@@ -1,4 +1,4 @@
-import Chat from "../components/ui/Chat";
+import Chat from "../components/ui/Chat/Chat";
 import LeftPanel from "../components/ui/LeftPanel/LeftPanel";
 
 import './MainPage.scss'
