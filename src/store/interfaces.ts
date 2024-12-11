@@ -21,7 +21,8 @@ export interface IChatStore {
 
 
     addСhat:  (newChat : IChat) => void,
-
+    isSideBarOpened : boolean,
+    toggleSideBar : () => void,
     isOpen : boolean,
     close : () => void,
     open : () => void,

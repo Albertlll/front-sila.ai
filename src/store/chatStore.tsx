@@ -10,6 +10,10 @@ export const useChatStore = create<IChatStore>()(persist((set) => ({
     open : () => set({isOpen : true}),
 
 
+    isSideBarOpened : true,
+    toggleSideBar : () => set((state) => ({isSideBarOpened :!state.isSideBarOpened})),
+
+
     nowChatIndex : 0,
     setNowChatIndex : (newIndex : number) => set({nowChatIndex : newIndex}),
 

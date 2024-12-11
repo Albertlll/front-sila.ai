@@ -5,12 +5,11 @@ import { useEffect } from 'react';
 import { httpClient } from '../../../httpClient';
 import { useChatStore } from '../../../store/chatStore';
 import { IChat } from '../../../store/interfaces';
-import { ITextMessage, MessageProps } from '../Message/interfaces';
+import { MessageProps } from '../Message/interfaces';
 function LeftPanel() {
 
 
-    const {uuid, setLastChats, lastChats, setMessages, nowChatIndex, setNowChatIndex, addСhat} = useChatStore();
-
+    const {uuid, setLastChats, lastChats, setMessages, setNowChatIndex, addСhat, isSideBarOpened, toggleSideBar} = useChatStore();
 
     useEffect(() => {
 
@@ -101,12 +100,17 @@ function LeftPanel() {
 
 
     return (
-        <div className="left_panel">
+        <div className={ isSideBarOpened ? "left_panel" : "left_panel_closed"}>
 
             <div className='top_segment'>
-                <img src={logo} alt="" />
+
+                {
+                    isSideBarOpened &&
+                        <img src={logo} alt="" />
+
+                }
         
-                <button className='close_sidebar'>
+                <button className='close_sidebar' onClick={() => toggleSideBar()}>
                     <Sidebar color='white'/>
                 </button>
         
@@ -114,7 +118,10 @@ function LeftPanel() {
 
             <button className='new_chat_btn' onClick={() => addNewChat()}>
                 <Search className='zoomer' color="white"/>
-                <div>Новый чат</div>
+                {
+                    isSideBarOpened &&
+                    <div>Новый чат</div>
+                }
             </button>
 
 
@@ -123,17 +130,22 @@ function LeftPanel() {
 
                 <button>
                     <MessageCircle className="icon" color="white"/>
-                    <h3>Чат</h3>
+                    {isSideBarOpened &&
+                    <h3>Чат</h3>}
                 </button>
 
                 <button>
                     <User className="icon" color="white"/>
-                    <h3>Профиль</h3>
+                    {isSideBarOpened &&
+                     <h3>Профиль</h3>}
                 </button>
 
                 <button>
                     <Layers3 className="icon" color="white"/>
+                    {isSideBarOpened &&
+                    
                     <h3>База знаний</h3>
+                    }
                 </button>
 
 
@@ -141,6 +153,9 @@ function LeftPanel() {
 
             <div className='splitter'></div>
 
+            
+            {isSideBarOpened ?
+            <>
             <div className='message_branches_label'>
                 <Layers3 className="icon" color="white"/>
                 <h3>История чатов</h3>
@@ -158,7 +173,13 @@ function LeftPanel() {
 
 
             </div>
+            </>
 
+            : 
+            
+            "fd"
+
+}
 
 
 

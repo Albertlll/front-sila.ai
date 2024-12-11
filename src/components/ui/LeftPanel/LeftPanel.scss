@@ -151,3 +151,18 @@
 
 
 }
+
+.left_panel_closed {
+    @extend .left_panel;
+    width: 50px;
+
+    .tools_list {
+        @extend .tools_list;
+        align-items: center;
+    }
+    .top_segment {
+        @extend .top_segment;
+        align-items: center;
+        justify-content: center;
+    }
+}

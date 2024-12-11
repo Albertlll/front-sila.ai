@@ -82,7 +82,7 @@ const MessageInput = () => {
                 )
             })
     
-        }).catch((error) => {
+        }).catch(() => {
 
             console.log("ошибка запроса, вывод тестовых данных")
 

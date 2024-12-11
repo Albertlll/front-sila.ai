@@ -91,7 +91,7 @@ function Popup() {
             })
     
         })
-        .catch((error) => {
+        .catch(() => {
             console.log("ошибка запроса, вывод тестовых данных")
 
             addMessage(

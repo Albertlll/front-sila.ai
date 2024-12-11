@@ -1,6 +1,7 @@
 export interface IImageMessage {
     sender : 'bot' | 'user';
     type : 'image';
+    
     content : {
         url : string;
         text : string;
@@ -29,3 +30,14 @@ export interface IAudioMessage {
 
 export type MessageProps = IAudioMessage | ITextMessage | IImageMessage
 
+
+
+const test : MessageProps = {
+    sender : 'bot',
+    type: 'text',
+    content : {
+        text : "fd"
+    }
+    
+
+}
