@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { Layers3, MessageCircle, Search, Sidebar, User } from 'lucide-react';
+import { Layers3, MessageCircle, MessagesSquare, Search, Sidebar, User } from 'lucide-react';
 import './LeftPanel.scss'
 import { useEffect } from 'react';
 import { httpClient } from '../../../httpClient';
@@ -116,6 +116,11 @@ function LeftPanel() {
         
             </div>
 
+
+            {
+                    isSideBarOpened &&
+
+
             <button className='new_chat_btn' onClick={() => addNewChat()}>
                 <Search className='zoomer' color="white"/>
                 {
@@ -123,6 +128,8 @@ function LeftPanel() {
                     <div>Новый чат</div>
                 }
             </button>
+
+            }   
 
 
 
@@ -149,15 +156,24 @@ function LeftPanel() {
                 </button>
 
 
-            </div>
+                <button>
+                    <MessagesSquare className="icon" color="white"/>
+                    {isSideBarOpened &&
+                    
+                    <h3>Чаты</h3>
+                    }
+                </button>
 
+
+
+            </div>
+            {isSideBarOpened &&
+            <>
             <div className='splitter'></div>
 
             
-            {isSideBarOpened ?
-            <>
+
             <div className='message_branches_label'>
-                <Layers3 className="icon" color="white"/>
                 <h3>История чатов</h3>
             </div>
 
@@ -175,10 +191,7 @@ function LeftPanel() {
             </div>
             </>
 
-            : 
-            
-            "fd"
-
+ 
 }
 
 
