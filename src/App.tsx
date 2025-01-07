@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './App.scss'
-import MainPage from './pages/MainPage'
+import MainPage from './pages/pagesLayout'
 
 import { httpClient } from './httpClient';
 import { useChatStore } from './store/chatStore';

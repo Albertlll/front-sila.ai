@@ -60,6 +60,9 @@ const Message: React.FC<MessageProps> = (props) => {
         <div className={props.sender === 'bot' ? 'message_left' : 'message_right'}>
             {props.sender === 'bot' && <img src={silalogo} alt="Логотип" />}
 
+            <div className='message_content_block'>
+
+
             {props.type === 'text' ? (
                 <TextMessage text={props.content.text} />
             ) : props.type === 'image' ? (
@@ -91,6 +94,9 @@ const Message: React.FC<MessageProps> = (props) => {
                     </button>
                 </div>
             )}
+
+            </div>
+
         </div>
     );
 };

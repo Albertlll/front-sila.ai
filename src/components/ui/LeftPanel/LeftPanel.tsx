@@ -6,6 +6,7 @@ import { httpClient } from '../../../httpClient';
 import { useChatStore } from '../../../store/chatStore';
 import { IChat } from '../../../store/interfaces';
 import { MessageProps } from '../Message/interfaces';
+import { Link } from 'react-router-dom';
 function LeftPanel() {
 
 
@@ -30,7 +31,65 @@ function LeftPanel() {
                     content: 'Привет, как дела?',
                     timestamp: '2022-01-15T10:35:00'
                 }
-            }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+
+            {
+                chat_id: 2,
+                last_message: {
+                    sender: 'Jane Doe',
+                    content: 'Привет, как дела?',
+                    timestamp: '2022-01-15T10:35:00'
+                }
+            },
+
         ])
 
 
@@ -135,25 +194,26 @@ function LeftPanel() {
 
             <div className='tools_list'>
 
-                <button>
+                <Link to="/chat" className='link'>
                     <MessageCircle className="icon" color="white"/>
                     {isSideBarOpened &&
                     <h3>Чат</h3>}
-                </button>
+                </Link>
 
-                <button>
+                <Link to="/chat" className='link'>
+                
                     <User className="icon" color="white"/>
                     {isSideBarOpened &&
                      <h3>Профиль</h3>}
-                </button>
+                </Link>
 
-                <button>
+                <Link to="knowlege-base"  className='link'>
                     <Layers3 className="icon" color="white"/>
                     {isSideBarOpened &&
                     
                     <h3>База знаний</h3>
                     }
-                </button>
+                </Link>
 
 
                 <button>
@@ -174,7 +234,7 @@ function LeftPanel() {
             
 
             <div className='message_branches_label'>
-                <h3>История чатов</h3>
+                <h3>Недавние чаты</h3>
             </div>
 
             <div className='chats'>

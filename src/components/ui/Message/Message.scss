@@ -17,11 +17,16 @@
 
     position: relative;
 
-    & .actions {
-        position: absolute;
-        bottom: -40px;
-        left: 55px;
+
+    .message_content_block {
         display: flex;
+        flex-direction: column;
+        gap: 5px;
+        
+    }
+
+    & .actions {
+                display: flex;
         gap: 20px;
         border-radius: 10px;
         padding: 5px;
