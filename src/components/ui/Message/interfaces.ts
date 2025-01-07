@@ -32,12 +32,12 @@ export type MessageProps = IAudioMessage | ITextMessage | IImageMessage
 
 
 
-const test : MessageProps = {
-    sender : 'bot',
-    type: 'text',
-    content : {
-        text : "fd"
-    }
+// const test : MessageProps = {
+//     sender : 'bot',
+//     type: 'text',
+//     content : {
+//         text : "fd"
+//     }
     
 
-}
+// }

@@ -3,6 +3,14 @@
 
 .left_panel {
 
+    button {
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
     height: 100%;
 
@@ -33,6 +41,21 @@
         background-color: transparent;
         gap: 16px;
         cursor: pointer;
+
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+
+
+        text-decoration: none;
+
+        &:hover {
+            background-color: rgb(92, 92, 92);
+            border-radius: 10px;
+
+        }
         
 
         h3 {
@@ -49,18 +72,6 @@
     
 
 
-    a, button {
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-
-        border: none;
-        outline: none;
-
-        text-decoration: none;
-    }
 
 
 
@@ -108,8 +119,9 @@
         color: vars.$text-color;
         margin-top: 20px;
         gap: 13px;
-        height: 150px;
+        height: 40px;
         background-color: vars.$sub-btn;
+        flex-shrink: 0;
     }
 
     .zoomer {
@@ -125,13 +137,19 @@
     width: 320px;
 
     .message_branches_label {
-        @extend .link;
-        cursor: default;
+
+        h3 {
+            font-weight: 500;
+        }
+        color: vars.$text-color;
+
         display: flex;
-        gap: 16px;
+        gap: 8px;
 
         align-self: start;
-        margin-top: 32px;
+        margin-top: 25px;
+
+
     }
 
     .chats{
@@ -207,6 +225,8 @@
 
 
 
+
+
     // .tools_list {
     //     @extend .tools_list;
     //     display: flex;
@@ -217,3 +237,16 @@
     // }
 
 }
+
+
+// @media (width < 628px) {
+
+//     .left_panel {
+//         position: absolute;
+
+//         background-color: vars.$main-bg;
+
+//         z-index: 20;
+//     }
+
+// }
