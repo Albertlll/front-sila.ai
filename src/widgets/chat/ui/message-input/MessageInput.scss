@@ -1,0 +1,100 @@
+@use '../../../../app/styles' as vars;
+
+
+
+.hidden{
+    display: none;
+    
+}
+
+
+.arrow_btn {
+    border-radius: 999px;
+    background-color: vars.$accent-btn;
+    padding: 5px;
+    outline: none;
+    border: none;
+}
+
+
+.pin_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.mic_btn {
+    background: transparent;
+}
+
+
+
+.messageInputBlock {
+    display: flex;
+
+    gap: 10px;
+
+
+
+    position: relative;
+    // margin-bottom: 20px;
+    // padding-top: 18px;
+    // padding-bottom: 18px;
+
+    // padding-left: 22px;
+    // padding-right: 22px;
+
+    padding: 12px;
+
+
+    // height: 60px;
+    box-sizing: border-box;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+
+
+
+    background-color: #2F2F2F;
+    border-radius: 9999px;
+
+    button {
+        height: 100%;
+        aspect-ratio: 1/1;
+        // padding: 3px;
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        padding: 4px;
+        
+
+
+    }
+
+
+    input[type="text"] {
+        width: 100%;
+        flex-shrink: 1;
+        font-family: 'Montserrat';
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: white;
+
+        font-size: 18px;
+        padding: 0;
+    }
+}
+
+
+@media ( width < 426px) {
+    .messageInputBlock {
+        margin-bottom: 10px;
+
+        height: 40px;
+    }
+}

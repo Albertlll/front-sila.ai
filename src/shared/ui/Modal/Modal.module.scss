@@ -1,0 +1,16 @@
+@use '../../../app/styles/' as vars;
+
+.modal::backdrop{
+    background-color: rgba(0, 0, 0, 0.5),
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+	transform: translate(-50%, -50%);
+ 	background-color: #454545;
+ 	border: none;
+ 	border-radius: 50px;
+}
